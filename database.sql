@@ -22,6 +22,6 @@ create table users (
     plan_id serial not null primary key,
     sms_price int,
     call_price int
+FOREIGN KEY (plan_id) REFERENCES price_plan(id)
 );
 
-FOREIGN KEY (plan_id) REFERENCES price_plan(id)
