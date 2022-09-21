@@ -8,22 +8,20 @@ grant all privileges on database phone_bill to kamva;
 
 
 
-create table price_plan{
-   plan_id serial not null primary key;
-   plan_name text not null;
-   
-}
+create table price_plan (
+   id serial not null primary key,
+   plan_name text not null
+);
 
 INSERT INTO price_plan (plan_name) VALUES('sms100');
 INSERT INTO price_plan (plan_name) VALUES('call100');
 INSERT INTO price_plan (plan_name) VALUES('text-me');
 
 
-create table user{
-    id serial not null primary key,
-    sms_price int;
+create table users (
+    plan_id serial not null primary key,
+    sms_price int,
     call_price int
-FOREIGN KEY (id) REFERENCES price_plan(plan_id)
+);
 
-}
-
+FOREIGN KEY (plan_id) REFERENCES price_plan(id)
